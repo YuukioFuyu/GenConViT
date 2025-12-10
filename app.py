@@ -1,5 +1,6 @@
 import gradio as gr
 import torch
+from model.pred_func import df_face
 import os
 import urllib.request
 
