@@ -73,8 +73,7 @@ def preprocess_frame(frame):
 
 
 def pred_vid(df, model):
-    with torch.no_grad():
-        return max_prediction_value(torch.sigmoid(model(df).squeeze()))
+    pass
 
 
 def max_prediction_value(y_pred):
