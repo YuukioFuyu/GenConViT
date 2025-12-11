@@ -18,3 +18,7 @@ def load_model_once():
         print("Model not loaded, preparing...")
         # While not containing the original model
         model = "placeholder_model"
+
+def detect_deepfake(video, num_frames):
+    print("Receiving video...")
+    return {"REAL": 0.5, "FAKE": 0.5}
