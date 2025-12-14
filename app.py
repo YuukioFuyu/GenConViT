@@ -15,9 +15,12 @@ model = None
 def load_model_once():
     global model
     if model is None:
-        print("Model not loaded, preparing...")
-        # While not containing the original model
-        model = "placeholder_model"
+        download_models()
+        print("Loading GenConViT model...")
+        ed_weight = 'genconvit_ed_inference'
+        vae_weight = 'genconvit_vae_inference'
+        model = load_genconvit(config, net='genconvit', ed_weight=ed_weight, vae_weight=vae_weight, fp16=False)
+        print("Model loaded successfully.")
 
 def detect_deepfake(video, num_frames):
     print("Receiving video...")
