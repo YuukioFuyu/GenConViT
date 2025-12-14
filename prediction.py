@@ -18,7 +18,6 @@ def vids(
     
     model = load_genconvit(config, net, ed_weight, vae_weight, fp16)
     print(net)
-    exit()
     for filename in os.listdir(root_dir):
         curr_vid = os.path.join(root_dir, filename)
 
