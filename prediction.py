@@ -254,6 +254,10 @@ def predict(
     else:
         df = df_face(vid, num_frames)  # extract face from the frames
 
+    if len(df) == 0:
+        print(f"Warning: No faces detected in {vid}. Skipping prediction.")
+        return result, accuracy, count, [None, None]
+
     if fp16:
         df.half()
     
