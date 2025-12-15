@@ -1,8 +1,8 @@
 import gradio as gr
 import torch
-from model.pred_func import df_face
 import os
 import urllib.request
+from model.pred_func import df_face, pred_vid, real_or_fake
 
 def download_models():
     weight_dir = 'weight'
