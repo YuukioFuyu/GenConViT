@@ -5,10 +5,24 @@ import os
 import urllib.request
 
 def download_models():
-    """
-    Placeholder for the weight model download function
-    """
-    pass
+    weight_dir = 'weight'
+    ed_url = 'https://huggingface.co/Deressa/GenConViT/resolve/main/genconvit_ed_inference.pth'
+    vae_url = 'https://huggingface.co/Deressa/GenConViT/resolve/main/genconvit_vae_inference.pth'
+    ed_path = os.path.join(weight_dir, 'genconvit_ed_inference.pth')
+    vae_path = os.path.join(weight_dir, 'genconvit_vae_inference.pth')
+
+    if not os.path.exists(weight_dir):
+        os.makedirs(weight_dir)
+
+    if not os.path.exists(ed_path):
+        print("Downloading ED model weights...")
+        urllib.request.urlretrieve(ed_url, ed_path)
+        print("Download complete.")
+
+    if not os.path.exists(vae_path):
+        print("Downloading VAE model weights...")
+        urllib.request.urlretrieve(vae_url, vae_path)
+        print("Download complete.")
 
 model = None
 
