@@ -55,11 +55,18 @@ def detect_deepfake(video_path, num_frames):
         print(f"An error occurred: {e}")
         return "An error occurred during processing. The video might be corrupted or in an unsupported format."
 
+title = "GenConViT: Deepfake Video Detection"
+
 iface = gr.Interface(
     fn=detect_deepfake,
-    inputs=[gr.Video(), gr.Slider(1, 30, value=15)],
-    outputs=gr.Label()
+    inputs=[
+        gr.Video(label="Upload Video"),
+        gr.Slider(1, 200, value=15, step=1, label="Number of Frames")
+    ],
+    outputs=gr.Label(num_top_classes=2, label="Prediction Result"),
+    title=title,
+    description=description
 )
 
 if __name__ == "__main__":
-    iface.launch()
+    iface.queue().launch()
