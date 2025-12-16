@@ -89,7 +89,7 @@ def max_prediction_value(y_pred):
 
 
 def real_or_fake(prediction):
-    return {0: "REAL", 1: "FAKE"}[prediction ^ 1]
+    return {0:"FAKE",1:"REAL"}[prediction]
 
 
 def extract_frames(video_file, num_frames=15):
