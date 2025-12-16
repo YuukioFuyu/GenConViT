@@ -65,7 +65,12 @@ iface = gr.Interface(
     ],
     outputs=gr.Label(num_top_classes=2, label="Prediction Result"),
     title=title,
-    description=description
+    examples=[
+        ["sample_prediction_data/aajsqyyjni.mp4", 15],
+        ["sample_prediction_data/anndvqgoko.mp4", 15],
+        ["sample_prediction_data/0017_fake.mp4.mp4", 15],
+        ["sample_prediction_data/0048_fake.mp4.mp4", 15]
+    ]
 )
 
 if __name__ == "__main__":
