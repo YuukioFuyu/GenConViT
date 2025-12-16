@@ -73,7 +73,13 @@ def preprocess_frame(frame):
 
 
 def pred_vid(df, model):
-    pass
+    with torch.no_grad():
+        output = model(df).squeeze()
+        if len(output.shape) == 1:
+            output = output.unsqueeze(0)
+
+        probabilities = torch.softmax(output, dim=1)
+        return max_prediction_value(probabilities)
 
 
 def max_prediction_value(y_pred):
