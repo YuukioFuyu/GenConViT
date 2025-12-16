@@ -83,14 +83,9 @@ def pred_vid(df, model):
 
 
 def max_prediction_value(y_pred):
-    # Finds the index and value of the maximum prediction value.
     mean_val = torch.mean(y_pred, dim=0)
-    return (
-        torch.argmax(mean_val).item(),
-        mean_val[0].item()
-        if mean_val[0] > mean_val[1]
-        else abs(1 - mean_val[1]).item(),
-    )
+    max_val, max_idx = torch.max(mean_val, dim=0)
+    return max_idx.item(), max_val.item()
 
 
 def real_or_fake(prediction):
